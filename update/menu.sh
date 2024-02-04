@@ -27,10 +27,10 @@ ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}')"
 dmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $2" "substr ($3, 1 ,3)}')"
 umon="$(vnstat -m | grep `date +%G-%m` | awk '{print $5" "substr ($6, 1 ,3)}')"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}')"
-domain=$(cat /usr/etc/xray/domain)
-ISP=$(cat /usr/etc/xray/org)
+domain=$(cat /etc/xray/domain)
+ISP=$(cat /etc/xray/org)
 CITY=$(curl -s ipinfo.io/city)
-WKT=$(curl -s ipinfo.ip/timezone)
+WKT=$(cat /etc/timezone)
 DATE=$(date -R | cut -d " " -f -4)
 MYIP=$(curl -sS ipinfo.io/ip)
 REGION=$( curl -s ipinfo.io/region )
@@ -60,9 +60,9 @@ echo -e "          ${WB}----- [ Bandwidth Monitoring ] -----${NC}"
 echo -e ""
 echo -e "  ${GB}Today ($DATE)     Monthly ($(date +%B/%Y))${NC}      "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "    ${GB}↓↓ Down: $dtoday              ↓↓ Down : $dmon${NC}   "
-echo -e "    ${GB}↑↑ Up  : $utoday              ↑↑ Up   : $umon${NC}   "
-echo -e "    ${GB}≈ Total: $ttoday              ≈ Total : $tmon${NC}   "
+echo -e "   ${YB}↓↓ Down${NC} : ${MB}$dtoday${NC}                     ${YB}↓↓ Down${NC} : ${MB}$dmon${NC}   "
+echo -e "   ${YB}↑↑ Up${NC}   : ${MB}$utoday${NC}                     ${YB}↑↑ Up${NC}   : ${MB}$umon${NC}   "
+echo -e "   ${YB}≈ Total${NC} : ${MB}$ttoday${NC}                     ${YB}≈ Total${NC} : ${MB}$tmon${NC}   "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "                ${WB}----- [ Menu Utama ] -----${NC}               "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
