@@ -27,10 +27,10 @@ ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}')"
 dmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $2" "substr ($3, 1 ,3)}')"
 umon="$(vnstat -m | grep `date +%G-%m` | awk '{print $5" "substr ($6, 1 ,3)}')"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}')"
-domain=$(cat /usr/local/etc/xray/domain)
-ISP=$(cat /usr/local/etc/xray/org)
-CITY=$(cat /usr/local/etc/xray/city)
-WKT=$(cat /usr/local/etc/xray/timezone)
+domain=$(cat /usr/etc/xray/domain)
+ISP=$(cat /usr/etc/xray/org)
+CITY=$(cat /usr/etc/xray/city)
+WKT=$(cat /usr/etc/xray/timezone)
 DATE=$(date -R | cut -d " " -f -4)
 MYIP=$(curl -sS ipv4.icanhazip.com)
 clear
@@ -49,18 +49,18 @@ echo -e "          ${WB}----- [ Bandwidth Monitoring ] -----${NC}"
 echo -e ""
 echo -e "  ${GB}Today ($DATE)     Monthly ($(date +%B/%Y))${NC}      "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "    ${GB}↓↓ Down: $dtoday           ↓↓ Down: $dmon${NC}   "
-echo -e "    ${GB}↑↑ Up  : $utoday           ↑↑ Up  : $umon${NC}   "
-echo -e "    ${GB}≈ Total: $ttoday           ≈ Total: $tmon${NC}   "
+echo -e "    ${GB}↓↓ Down: $dtoday            ↓↓ Down: $dmon${NC}   "
+echo -e "    ${GB}↑↑ Up  : $utoday            ↑↑ Up  : $umon${NC}   "
+echo -e "    ${GB}≈ Total: $ttoday            ≈ Total: $tmon${NC}   "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "                ${WB}----- [ Menu Utama ] -----${NC}               "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e " ${MB}[1]${NC} ${YB}SSH & OpenVPN MENU${NC}          ${MB}[7]${NC} ${YB}SHADOWSOCKSR MENU ${NC}"
-echo -e " ${MB}[2]${NC} ${YB}L2TP MENU${NC}                   ${MB}[8]${NC} ${YB}XRAY VMESS MENU${NC}"
-echo -e " ${MB}[3]${NC} ${YB}PPTP MENU${NC}                   ${MB}[9]${NC} ${YB}XRAY VLESS MENU${NC}"
-echo -e " ${MB}[4]${NC} ${YB}SSTP MENU${NC}                   ${MB}[10]${NC} ${YB}XRAY TROJAN MENU${NC}"
-echo -e " ${MB}[5]${NC} ${YB}WIREGUARD MENU${NC}              ${MB}[11]${NC} ${YB}TROJAN GO MENU ${NC}"
-echo -e " ${MB}[6]${NC} ${YB}SHADOWSOCKS MENU${NC}            ${MB}[12]${NC} ${YB}XRAY GRPC MENU ${NC}"
+echo -e " ${MB}[1]${NC} ${YB}SSH & OpenVPN MENU${NC}           ${MB}[7]${NC} ${YB}SHADOWSOCKSR MENU ${NC}"
+echo -e " ${MB}[2]${NC} ${YB}L2TP MENU${NC}                    ${MB}[8]${NC} ${YB}XRAY VMESS MENU${NC}"
+echo -e " ${MB}[3]${NC} ${YB}PPTP MENU${NC}                    ${MB}[9]${NC} ${YB}XRAY VLESS MENU${NC}"
+echo -e " ${MB}[4]${NC} ${YB}SSTP MENU${NC}                    ${MB}[10]${NC} ${YB}XRAY TROJAN MENU${NC}"
+echo -e " ${MB}[5]${NC} ${YB}WIREGUARD MENU${NC}               ${MB}[11]${NC} ${YB}TROJAN GO MENU ${NC}"
+echo -e " ${MB}[6]${NC} ${YB}SHADOWSOCKS MENU${NC}             ${MB}[12]${NC} ${YB}XRAY GRPC MENU ${NC}"
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "                 ${WB}----- [ Utility ] -----${NC}                "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
