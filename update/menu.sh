@@ -29,19 +29,30 @@ umon="$(vnstat -m | grep `date +%G-%m` | awk '{print $5" "substr ($6, 1 ,3)}')"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}')"
 domain=$(cat /usr/etc/xray/domain)
 ISP=$(cat /usr/etc/xray/org)
-CITY=$(cat /usr/etc/xray/city)
-WKT=$(cat /usr/etc/xray/timezone)
+CITY=$(curl -s ipinfo.io/city)
+WKT=$(curl -s ipinfo.ip/timezone)
 DATE=$(date -R | cut -d " " -f -4)
-MYIP=$(curl -sS ipv4.icanhazip.com)
+MYIP=$(curl -sS ipinfo.io/ip)
+REGION=$( curl -s ipinfo.io/region )
+# GETTING OS INFORMATION
+source /etc/os-release
+Versi_OS=$VERSION
+ver=$VERSION_ID
+Tipe=$NAME
+URL_SUPPORT=$HOME_URL
+basedong=$ID
 clear
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "               ${WB}----- [ D-Zeyn Script ] -----${NC}              "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e " ${YB}Service Provider${NC} ${WB}: $ISP"
+echo -e " ${YB}Service Provider${NC} ${WB}: $ISP${NC}"
+echo -e " ${YB}OS Name${NC}          ${WB}: $Tipe${NC}"
+echo -e " ${YB}IP${NC}               ${WB}: $MYIP${NC}"
 echo -e " ${YB}Timezone${NC}         ${WB}: $WKT${NC}"
 echo -e " ${YB}City${NC}             ${WB}: $CITY${NC}"
 echo -e " ${YB}Date${NC}             ${WB}: $DATE${NC}"
 echo -e " ${YB}Domain${NC}           ${WB}: $domain${NC}"
+echo -e " ${YB}Region${NC}           ${WB}: $REGION${NC}"
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "     ${WB}NGINX STATUS :${NC} $status_nginx    ${WB}XRAY STATUS :${NC} $status_xray   "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
@@ -49,9 +60,9 @@ echo -e "          ${WB}----- [ Bandwidth Monitoring ] -----${NC}"
 echo -e ""
 echo -e "  ${GB}Today ($DATE)     Monthly ($(date +%B/%Y))${NC}      "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
-echo -e "    ${GB}↓↓ Down: $dtoday            ↓↓ Down: $dmon${NC}   "
-echo -e "    ${GB}↑↑ Up  : $utoday            ↑↑ Up  : $umon${NC}   "
-echo -e "    ${GB}≈ Total: $ttoday            ≈ Total: $tmon${NC}   "
+echo -e "    ${GB}↓↓ Down: $dtoday              ↓↓ Down : $dmon${NC}   "
+echo -e "    ${GB}↑↑ Up  : $utoday              ↑↑ Up   : $umon${NC}   "
+echo -e "    ${GB}≈ Total: $ttoday              ≈ Total : $tmon${NC}   "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
 echo -e "                ${WB}----- [ Menu Utama ] -----${NC}               "
 echo -e "${BB}————————————————————————————————————————————————————————${NC}"
